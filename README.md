@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# WHOIS Lookup
 
-## Getting Started
+WHOIS Lookup Project adalah aplikasi sederhana yang dibuat menggunakan Next.js untuk mengambil dan menampilkan informasi WHOIS dari domain yang dimasukkan.
 
-First, run the development server:
+## Disclaimer
+**This program is intended for educational and informational purposes only. The author is not responsible for any illegal use of this program. Use it responsibly.**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Fitur Utama
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Pengguna dapat memasukkan nama domain untuk melihat data WHOIS-nya.
+- Data WHOIS ditampilkan dalam format JSON.
+- Penanganan error jika terjadi kegagalan pengambilan data.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Cara Kerja
 
-## Learn More
+1. **User Interface**:
+   - Pengguna memasukkan nama domain di kolom input.
+   - Klik tombol "Lookup" untuk memulai pencarian.
+   - Hasil pencarian WHOIS ditampilkan di layar.
 
-To learn more about Next.js, take a look at the following resources:
+2. **API Request**:
+   - Aplikasi mengirimkan permintaan GET ke API [WhoisXML](https://www.whoisxmlapi.com/).
+   - Hasil respon berupa informasi WHOIS dalam format JSON akan dikirim kembali dan ditampilkan.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Handling Error**:
+   - Jika domain tidak valid atau API gagal merespons, pesan error akan ditampilkan kepada pengguna.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Prasyarat
 
-## Deploy on Vercel
+- **Node.js**: Harus terinstal di mesin lokal.
+- **API Key**: Anda membutuhkan API Key dari [WhoisXML API](https://www.whoisxmlapi.com/) untuk mengakses data WHOIS.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Instalasi
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Clone repository ini:
+   ```bash
+   git clone https://github.com/ferdysetiawan/whois.git
+
+2. Masuk ke direktori project:
+    ```sh
+    cd whois-lookup
+    ```
+3. Instal dependensi:
+    ```sh
+    npm install
+    ```
+4. Buat file .env.local di root project dan masukkan API Key Anda:
+    ```sh
+    WHOISXML_API_KEY=your_api_key_here
+    ```
+5. Jalankan server development:
+    ```sh
+    npm run dev
+    ```
+
+## Penggunaan
+1. Buka aplikasi pada browser.
+2. Masukkan nama domain di kolom input.
+3. Klik tombol "Lookup".
+4. Data WHOIS akan ditampilkan dalam format JSON.
+5. Jika ada error, pesan error akan ditampilkan.
+
+## Struktur File
+`page.js`: Berisi logika client-side untuk input domain dan tampilan hasil WHOIS.
+`route.js`: Berfungsi untuk menangani request ke API WhoisXML dan mengirimkan hasilnya kembali ke page.js.
+
+## Lisensi
+Project ini dilisensikan di bawah MIT License. Lihat detail [LICENSE](LICENSE).
+
+## Penulis
+Proyek ini dibuat untuk tujuan belajar. Gunakanlah secara bertanggung jawab dan beretika.
